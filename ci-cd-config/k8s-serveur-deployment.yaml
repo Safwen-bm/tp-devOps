@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serveur-deployment
+  labels:
+    app: serveur
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: serveur
+  template:
+    metadata:
+      labels:
+        app: serveur
+    spec:
+      containers:
+      - name: serveur
+        # L'image sera mise à jour par Jenkins. Utilisez un placeholder pour l'instant.
+        image: monuser/monapp-serveur:latest 
+        ports:
+        - containerPort: 6000
+---
+# Définition du Service pour le Serveur (Accès interne au cluster)
+apiVersion: v1
+kind: Service
+metadata:
+  name: serveur-service # C'est le nom DNS utilisé par le CLIENT pour se connecter
+spec:
+  selector:
+    app: serveur
+  ports:
+    - protocol: TCP
+      port: 6000
+      targetPort: 6000
+  type: ClusterIP
