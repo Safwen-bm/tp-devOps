@@ -17,7 +17,8 @@ spec:
       containers:
       - name: serveur
         # L'image sera mise à jour par Jenkins. Utilisez un placeholder pour l'instant.
-        image: monuser/monapp-serveur:latest 
+        image: atelier-jenkins-k8s-serveur:latest
+        imagePullPolicy: Never
         ports:
         - containerPort: 6000
 ---

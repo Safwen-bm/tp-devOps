@@ -17,5 +17,6 @@ spec:
       containers:
       - name: client
         # L'image sera mise à jour par Jenkins.
-        image: monuser/monapp-client:latest 
+        image: atelier-jenkins-k8s-client:latest
         # Le client n'a besoin que d'accéder au serveur via le Service.
+        imagePullPolicy: Never

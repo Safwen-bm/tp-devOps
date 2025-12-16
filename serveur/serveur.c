@@ -30,7 +30,7 @@ memset(&hints,0,sizeof(hints));
 hints.ai_family = AF_INET;
 hints.ai_socktype = SOCK_STREAM;
 hints.ai_flags = AI_PASSIVE;
-if((error=getaddrinfo(NULL,"5000",&hints,&res)) !=0 ) gai_strerror(error);
+if((error=getaddrinfo(NULL,"6000",&hints,&res)) !=0 ) gai_strerror(error);
 if((sockfd=socket(res->ai_family, res->ai_socktype, res->ai_protocol))<0) erreur("Erreur socket():",2);
 if(setsockopt(sockfd,SOL_SOCKET,SO_REUSEADDR,&tr,sizeof(int)) == -1) erreur("Erreur setsockopt() SO_REUSEADDR",2);
 if(bind(sockfd, (struct sockaddr *) res->ai_addr, res->ai_addrlen)<0) erreur("Erreur bind()",2);

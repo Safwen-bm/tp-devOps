@@ -3,7 +3,7 @@ FROM gcc:11 AS build
 WORKDIR /app
 COPY . .
 
-RUN gcc -o serveur serveur.c
+RUN gcc -o serveur -static serveur.c
 
 # --- ÉTAPE 2: Final Stage (Image Légère) ---
 FROM alpine:latest
