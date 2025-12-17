@@ -10,4 +10,5 @@ FROM alpine:latest
 WORKDIR /usr/local/bin
 COPY --from=build /app/client .
 
+# CMD ["/usr/local/bin/client", "serveur-service", "6000"]
 CMD ["/usr/local/bin/client", "10.108.181.11", "6000"]

@@ -17,6 +17,8 @@ void erreur(char* string, int exit_status);
 
 int main(int argc, char* argv[])
 {
+    printf("Démarrage du client Kubernetes...\n");
+    
     int sockfd, error, i, nbOct;
     struct addrinfo hints, *res;
     char buffer[50], port[10] = "6000";
@@ -60,6 +62,7 @@ int main(int argc, char* argv[])
         if (connect(sockfd, res->ai_addr, res->ai_addrlen) == 0)
         {
             printf("Connexion réussie à %s sur le port %s !\n", argv[1], port);
+            printf("Client démarré et connecté au serveur via Kubernetes Service !\n");
             connected = 1;
             freeaddrinfo(res);
             break;
